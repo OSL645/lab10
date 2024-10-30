@@ -17,7 +17,7 @@
 # If num1 is greater than num2
 
 
-# Display the message "The first number is greater than th esecond number."
+# Display the message "The first number is greater than the second number."
 
 
 # Else if num1 is less than num2
