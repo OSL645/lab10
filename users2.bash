@@ -7,7 +7,7 @@
 
 # Populate the array users with usernames from the file userinfo.csv
 users=($(cat userinfo.csv | cut -d"," -f1))
-emails=($(cat userinfo.csv | cut -d"," -f2))
+emails=($(cat userinfo.csv | cut -d"," -f3))
 
 # Print a heading
 echo -e "Username\tEmail"

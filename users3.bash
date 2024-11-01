@@ -34,10 +34,11 @@ fi
 
 # Populate the array users with usernames from the file specified by the user
 users=($(cat $1 | cut -d"," -f1))
-emails=($(cat $1 | cut -d"," -f2))
+names=($(cat $1 | cut -d"," -f2 | sed 's/ /+/'))
+emails=($(cat $1 | cut -d"," -f3))
 
 # Print a heading
-echo -e "Username\tEmail"
+printf "%-9s\t%-20s%-10s\n" "Username" "Full Name" "Email"
 
 # Initialize num to 0
 num=0
@@ -46,8 +47,8 @@ num=0
 for user in "${users[@]}"; do
 
     # Use printf to display the username and email separated by a tab    
-    printf "%-9s\t%10s\n" $user ${emails[$num]}
-    
+    printf "%-9s\t%-20s%-10s\n" $user ${names[$num]} ${emails[$num]} | tr '+' ' '
+
     # Increment num by 1
     num=$(($num + 1))
 
