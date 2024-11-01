@@ -1,7 +1,7 @@
 #!/bin/bash
 # Author:
 # Date:
-# Purpose: To create users input from a file in Tutorial 10
+# Purpose: To create users input from a file
 # Usage: ./createusers.bash {args}
 # Options:
 #    -i filename
