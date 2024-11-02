@@ -9,7 +9,7 @@
 #   2 - File does not exist
 
 # If the number of command line arguments is not equal to 1
-if [ $# -ne 1 ]; then
+if [[ $# -ne 1 ]]; then
 
     # Use echo to display a message indicating the correct usage of the script
     echo "Usage: ./users3.bash <filename>"
@@ -21,7 +21,7 @@ if [ $# -ne 1 ]; then
 fi
 
 # If the file specified does not exist
-if [ ! -f $1 ]; then
+if [[ ! -f $1 ]]; then
 
     # Use echo to display a message indicating that the file does not exist
     echo "The file $1 does not exist."
