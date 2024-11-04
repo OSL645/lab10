@@ -17,7 +17,11 @@ def test_users3():
     assert "Username" in output
     assert "Email" in output
     assert "Full Name" in output
-    assert "@avengers.org" in output
+    assert "ironman@avengers.org" in output
+    assert "hulk@avengers.org" in output
+    assert "thor@avengers.org" in output
+    assert "captainamerica@avengers.org" in output
+    assert "blackwidow@avengers.org" in output
     assert "Tony Stark" in output
     assert "Bruce Banner" in output
     assert "Thor Odinson" in output
