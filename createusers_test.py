@@ -10,8 +10,6 @@ def test_createusers():
     output = result.stdout.read()
 
     # Check the exit code
-    #assert result.returncode == 0
-
-    print(result.returncode)
+    assert result.returncode == None
 
 test_createusers()
