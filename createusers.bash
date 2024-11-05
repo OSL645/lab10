@@ -26,7 +26,7 @@ fi
 if [[ $# -lt 2 ]]; then
 
     # Use echo to display a message indicating the correct usage of the script
-    echo "Usage: ./users.bash -i <filename>"
+    echo "Usage: ./createusers.bash -i <filename>"
 
     # Exit the script with an exit status of 2
     exit 2
