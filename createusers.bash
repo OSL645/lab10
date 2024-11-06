@@ -76,37 +76,69 @@ if [[ ! -f $filename ]]; then
 fi
 
 # Populate the array users with usernames from the file specified by the user
-users=($(cat $filename | cut -d"," -f1))
-names=($(cat $filename | cut -d"," -f2 | sed 's/ /+/'))
-emails=($(cat $filename | cut -d"," -f3))
+#users=($(cat $filename | cut -d"," -f1))
+#names=($(cat $filename | cut -d"," -f2 | sed 's/ /+/'))
+#emails=($(cat $filename | cut -d"," -f3))
 
-# Initialize num to 0
-num=0
+# Rewrite this with an associative array
+declare -A userInfo
 
-# For each username in the array users
-for user in "${users[@]}"; do
+while IFS=, read -r user name email; do
+    userInfo["$user,name"]="$name"
+    userInfo["$user,email"]="$email"
+done < "$filename"
 
-    # Generate a random password
-    password=$(openssl rand -base64 12)
+# For each user in the associative array, print the username, full name, and email
+for key in "${!userInfo[@]}"; do
+    if [[ $key == *",name" ]]; then
+        user=${key%,*}
 
-    # Create the user
-    useradd -c "${names[$num]}" -m $user -p $password
+        # Generate a random password
+        password=$(openssl rand -base64 12)
+        
+        # Create the user
+        useradd -c "$${userInfo[$user,name]}" -m $user -p $password
 
-    # Print the username, full name, email, and password using a here document
-    cat << EOF
-    Account Information:
-        Username: $user
-        Full Name: $(echo ${names[$num]} | tr '+' ' ')
-        Email: ${emails[$num]}
-        Password: $password
+        # Print the username, full name, email, and password using a here document
+        cat << EOF
+        Account Information:
+            Username: $user
+            Full Name: ${userInfo[$user,name]}
+            Email: ${userInfo[$user,email]}
+            Password: $password
 
 EOF
 
-    # Increment num by 1
-    num=$(($num + 1))
-
-# End for
+    fi
 done
+
+# Initialize num to 0
+#num=0
+
+# For each username in the array users
+# for user in "${users[@]}"; do
+
+#     # Generate a random password
+#     password=$(openssl rand -base64 12)
+
+#     # Create the user
+#     useradd -c "${names[$num]}" -m $user -p $password
+
+#     # Print the username, full name, email, and password using a here document
+#     cat << EOF
+#     Account Information:
+#         Username: $user
+#         Full Name: $(echo ${names[$num]} | tr '+' ' ')
+#         Email: ${emails[$num]}
+#         Password: $password
+
+# EOF
+
+#     # Increment num by 1
+#     num=$(($num + 1))
+
+# # End for
+# done
 
 # Display a completion message indicating the accounts have been created
 echo "Accounts have been created."
