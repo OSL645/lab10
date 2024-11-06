@@ -7,24 +7,16 @@
 
 # Populate the array users with usernames from the file userinfo.csv
 users=($(cat userinfo.csv | cut -d"," -f1))
-emails=($(cat userinfo.csv | cut -d"," -f3))
+
 
 # Print a heading
-echo -e "Username\tEmail"
-
-# Initialize num to 0
-num=0
+echo "Username"
 
 # For each username in the array users
 for user in "${users[@]}"; do
 
     # Use echo to display the username and email separated by a tab
-    echo -e "$user\t${emails[$num]}"
-
-    #printf "%-9s\t%10s\n" $user ${emails[$num]}
+    echo -e "$user"
     
-    # Increment num by 1
-    num=$(($num + 1))
-
 # End for
 done

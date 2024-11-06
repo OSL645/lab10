@@ -15,7 +15,5 @@ def test_users2():
     assert "srogers" in output
     assert "nromanoff" in output
     assert "Username" in output
-    assert "Email" in output
-    assert "@avengers.org" in output
 
 test_users2()
