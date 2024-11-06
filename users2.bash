@@ -14,8 +14,8 @@ echo "Username"
 # For each username in the array users
 for user in "${users[@]}"; do
 
-    # Use echo to display the username and email separated by a tab
-    echo -e "$user"
+    # Use echo to display the username
+    echo "$user"
     
 # End for
 done
