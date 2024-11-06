@@ -98,7 +98,7 @@ for key in "${!userInfo[@]}"; do
         password=$(openssl rand -base64 12)
         
         # Create the user
-        useradd -c "$${userInfo[$user,name]}" -m $user -p $password
+        useradd -c "${userInfo[$user,name]}" -m $user -p $password
 
         # Print the username, full name, email, and password using a here document
         cat << EOF
