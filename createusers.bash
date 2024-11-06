@@ -9,6 +9,7 @@
 #   2 - Incorrect number of command line arguments
 #   3 - Invalid option provided
 #   4 - File does not exist
+# https://phoenixnap.com/kb/bash-associative-array#ftoc-heading-3
 
 # If the user is not root, then
 if [[ $(whoami) != root ]]; then
