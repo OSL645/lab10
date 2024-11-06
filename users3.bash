@@ -42,7 +42,7 @@ while IFS=, read -r user name email; do
 done < "$1"
 
 # Print a heading
-printf "%-9s\t%-20s%-10s\n" "Username" "Full Name" "Email"
+printf "%-9s\t%-25s%-10s\n" "Username" "Full Name" "Email"
 
 # For each user in the associative array, print the username, full name, and email
 for key in "${!userInfo[@]}"; do
@@ -52,8 +52,8 @@ for key in "${!userInfo[@]}"; do
         user=${key%,*}
 
         # Use printf to display the username, full name, and email separated by a tab
-        printf "%-9s\t%-20s%-10s\n" "$user" "${userInfo[$user,name]}" "${userInfo[$user,email]}"
-        
+        printf "%-9s\t%-25s%-10s\n" "$user" "${userInfo[$user,name]}" "${userInfo[$user,email]}"
+      
     # End if
     fi
 
