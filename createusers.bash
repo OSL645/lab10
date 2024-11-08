@@ -84,7 +84,7 @@ while IFS=, read -r user name email; do
     userInfo["$user,email"]="$email"
 done < "$filename"
 
-# For each user in the associative array, print the username, full name, and email
+# For each user in the associative array, generate a random password, add the user and print the user's information on the screen
 for key in "${!userInfo[@]}"; do
 
     # If the key contains ",name", then
