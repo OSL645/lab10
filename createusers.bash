@@ -9,7 +9,6 @@
 #   2 - Incorrect number of command line arguments
 #   3 - Invalid option provided
 #   4 - File does not exist
-# https://phoenixnap.com/kb/bash-associative-array#ftoc-heading-3
 
 # If the user is not root, then
 if [[ $(whoami) != root ]]; then
@@ -24,7 +23,7 @@ if [[ $(whoami) != root ]]; then
 fi
 
 # If the number of command line arguments is less than 2
-if [[ $# -lt 2 ]]; then
+if [[ $# -ne 2 ]]; then
 
     # Use echo to display a message indicating the correct usage of the script
     echo "Usage: ./createusers.bash -i <filename>"
