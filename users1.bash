@@ -6,13 +6,12 @@
 #
 
 # Populate the array users with usernames
-users=("tstark" "bbanner" "thor" "srogers" "nromanoff")
+
 
 # For each username in the array users
-for user in "${users[@]}"; do
+
 
     # Use echo to display the username
-    echo $user
+
 
 # End for
-done

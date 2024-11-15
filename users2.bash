@@ -6,16 +6,15 @@
 #
 
 # Populate the array users with usernames from the file userinfo.csv
-users=($(cat userinfo.csv | cut -d"," -f1))
+
 
 # Print a heading
-echo "Username"
+
 
 # For each username in the array users
-for user in "${users[@]}"; do
+
 
     # Use echo to display the username
-    echo "$user"
+
     
 # End for
-done
