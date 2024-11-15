@@ -1,0 +1,67 @@
+name: Autograding Tests
+on:
+  - push
+  - workflow_dispatch
+  - repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: users1_test
+      id: users1_test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: users1_test
+        setup-command: sudo -H pip3 install pytest
+        command: pytest users1_test.py
+        timeout: 10
+        max-score: 1
+
+    - name: users2_test
+      id: users2_test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: users2_test
+        setup-command: sudo -H pip3 install pytest
+        command: pytest users2_test.py
+        timeout: 10
+        max-score: 1
+    
+    - name: users3_test
+      id: users3_test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: users3_test
+        setup-command: sudo -H pip3 install pytest
+        command: pytest users3_test.py
+        timeout: 10
+        max-score: 1
+
+    - name: createusers_test
+      id: createusers_test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: createusers_test
+        setup-command: sudo -H pip3 install pytest
+        command: pytest createusers_test.py
+        timeout: 10
+        max-score: 1
+        
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        USERS1_TEST_RESULTS: "${{steps.users1_test.outputs.result}}"
+        USERS2_TEST_RESULTS: "${{steps.users2_test.outputs.result}}"
+        USERS3_TEST_RESULTS: "${{steps.users3_test.outputs.result}}"
+        CREATEUSERS_TEST_RESULTS: "${{steps.createusers_test.outputs.result}}"
+        
+      with:
+        runners: users1_test,users2_test,users3_test,createusers_test
